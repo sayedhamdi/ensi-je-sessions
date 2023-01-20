@@ -14,19 +14,31 @@
     X<input type="text" name="" id="X" />
     <br />
     Y<input type="text" name="" id="Y" />
-    <button onclick="showSomme()">somme</button>
+    <button onclick="somme()">+</button>
+    <button onclick="minus()">-</button>
+    <button onclick="mult()">*</button>
+    <button onclick="div()">/</button>
     <h3></h3>
     <script>
       let x = document.querySelector("#X");
       let y = document.querySelector("#Y");
-      function showSomme() {
-        document.querySelector("h3").innerHTML = somme(
-          Number(x.value),
-          Number(y.value)
-        );
+      function somme() {
+        document.querySelector("h3").innerHTML =
+          Number(x.value) + Number(y.value);
       }
-      function somme(x, y) {
-        return "somme : " + (x + y);
+      function div() {
+        document.querySelector("h3").innerHTML =
+          Number(x.value) / Number(y.value);
+      }
+
+      function minus() {
+        document.querySelector("h3").innerHTML =
+          Number(x.value) - Number(y.value);
+      }
+
+      function mult() {
+        document.querySelector("h3").innerHTML =
+          Number(x.value) * Number(y.value);
       }
     </script>
   </body>

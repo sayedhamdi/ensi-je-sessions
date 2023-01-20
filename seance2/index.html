@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .box {
+        width: 400px;
+        height: 400px;
+        background: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">blablabla</div>
+    <button id="btn">click !</button>
+    <div class="counter">0</div>
+  </body>
+  <script>
+    // events that happens on the page
+    // the first the method of binding events
+    function handleClick() {
+      alert("hello");
+      console.log("clicked !");
+    }
+
+    let button = document.querySelector("#btn");
+    //button.addEventListener("click", handleClick);
+    function traitement() {
+      console.log("the third way of binding events in js");
+      // traitement
+    }
+
+    button.onclick = traitement;
+
+    /*window.onload = function () {
+      alert("page loaded");
+    };*/
+    /* window.addEventListener("load", function () {
+      console.log("page loaded ! ");
+      setTimeout(() => {});
+      (function () {
+        //alert("visit this website if you want to buy cookies");
+      },
+        3000);
+      // counting visitors
+      // j'increment le nombre de visiteur
+    });*/
+    let counter = 0;
+    // je selectionne avec js le box
+    let post = document.querySelector(".box");
+    // selectionne le div qui contien le compteur
+    let counterDiv = document.querySelector(".counter");
+
+    //executi el function kif tetaada el souris fou9 el post
+    function countHowManyTimesTheMouseWasOverThePost() {
+      console.log("souris taadet fou9 el post");
+      counter++;
+      counterDiv.innerHTML = counter;
+      post.style.background = "yellow";
+    }
+    function changeTheColor(event) {
+      console.log(event.target.parentElement);
+      colorize("blue");
+      return;
+    }
+
+    function colorize(color) {
+      post.style.background = color;
+    }
+
+    post.addEventListener("mouseover", countHowManyTimesTheMouseWasOverThePost);
+    post.addEventListener("mouseout", changeTheColor);
+
+    document.onkeydown = function (event) {
+      if (event.key == "Enter") {
+        console.log("rak nzelt ala el Enter ");
+        return;
+      }
+      console.log(event.key);
+    };
+  </script>
+</html>

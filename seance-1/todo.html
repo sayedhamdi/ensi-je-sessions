@@ -8,11 +8,10 @@
   </head>
   <body>
     <h1>Todo list</h1>
+    <div class="task-counter">1/1</div>
     <input type="text" />
     <button>add todo</button>
-    <ul>
-      <li>Echri khobz</li>
-    </ul>
+    <ul></ul>
     <script>
       let button = document.querySelector("button");
 
@@ -21,9 +20,64 @@
       let input = document.querySelector("input");
 
       button.addEventListener("click", addTodo);
-
+      let i = 0;
       function addTodo() {
-        liste.innerHTML += `<li> ${input.value} </li>`;
+        if (isInputEmpty()) {
+          alert("Input empty, please type something !");
+          return;
+        }
+
+        let li = document.createElement("li");
+        li.id = "todo-" + i;
+        i++;
+        let span = document.createElement("span");
+        let spanimg = document.createElement("span");
+
+        span.innerHTML = input.value;
+        let checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        let button = document.createElement("button");
+        button.innerText = "delete";
+        button.addEventListener("click", deleteTodo);
+        checkbox.addEventListener("change", check);
+        li.appendChild(checkbox);
+        li.appendChild(span);
+        li.appendChild(button);
+        liste.appendChild(li);
+        /*liste.innerHTML += `
+          <li>
+            <input type='checkbox'>
+            ${input.value}
+            <button onclick='deleteTodo(this)'>delete</button>
+          </li>`*/
+      }
+
+      function isInputEmpty() {
+        if (input.value == "") {
+          return true;
+        }
+        return false;
+      }
+
+      input.addEventListener("keypress", function (e) {
+        if (e.key == "Enter") {
+          addTodo();
+        }
+      });
+      function deleteTodo(e) {
+        let id = e.target.parentElement.id;
+        let elementToDelete = document.getElementById(id);
+        console.log(elementToDelete);
+        elementToDelete.remove();
+      }
+      function check(e) {
+        if (e.target.checked == true) {
+          e.target.parentElement.querySelector("span").style.textDecoration =
+            "line-through";
+        } else {
+          e.target.parentElement.querySelector("span").style.textDecoration =
+            "";
+        }
       }
     </script>
   </body>
