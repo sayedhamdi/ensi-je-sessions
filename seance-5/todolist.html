@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" />
+    <button>add</button>
+    <ul id="list"></ul>
+  </body>
+  <script>
+    let todos = [];
+
+    let input = document.querySelector("input");
+    let btn = document.querySelector("button");
+    let liste = document.querySelector("#list");
+    // affichage de la liste deja enregistrer
+    function initApp() {
+      if (localStorage.getItem("todos")) {
+        todos = JSON.parse(localStorage.getItem("todos"));
+      }
+      displayTodos();
+    }
+    // create todo
+
+    function displayTodos() {
+      liste.innerHTML = "";
+      todos.forEach((todo) => createTodo(todo));
+    }
+
+    window.onload = initApp;
+
+    const createTodo = ({ text, done }) => {
+      let li = document.createElement("li");
+      let span = document.createElement("span");
+      span.innerText = text;
+      let checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = done;
+      if (checkbox.checked) {
+        span.style.textDecoration = "line-through";
+      } else {
+        span.style.textDecoration = "";
+      }
+      li.appendChild(checkbox);
+      li.appendChild(span);
+      liste.appendChild(li);
+    };
+
+    btn.onclick = () => {
+      todos.push({ text: input.value, done: false });
+      localStorage.setItem("todos", JSON.stringify(todos));
+      displayTodos();
+    };
+  </script>
+</html>

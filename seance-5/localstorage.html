@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      name="firstname"
+      type="text"
+      placeholder="type here your first name"
+      autocomplete="off"
+    />
+    <input name="lastname" type="text" placeholder="type here your last name" />
+    <button id="save">save</button>
+    <script>
+      let first = document.querySelector("[name='firstname']");
+      let last = document.querySelector("[name='lastname']");
+      let btn = document.querySelector("#save");
+      // When starting the app load these variables from local storage and set to the input field
+
+      const initApp = () => {
+        // setup the app with prestored values if they exist
+        first.value = localStorage.getItem("first");
+        last.value = localStorage.getItem("last");
+      };
+
+      window.onload = initApp;
+
+      btn.onclick = () => {
+        console.log(`first : ${first.value} | last : ${last.value}`);
+        localStorage.setItem("first", first.value);
+        localStorage.setItem("last", last.value);
+      };
+    </script>
+  </body>
+</html>
