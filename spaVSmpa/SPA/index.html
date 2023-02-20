@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <ul>
+      <li><a href="index.html" id="1">Home Page</a></li>
+      <li><a href="about.html" id="2">About Page</a></li>
+      <li><a href="contact.html" id="3">Contact Page</a></li>
+    </ul>
+    <div id="root"></div>
+  </body>
+  <script>
+    let page1 = "<h1>Page 1</h1> <b>first page content</b>";
+    let page2 = "<h1>Page 2</h1> <b>second page content</b>";
+    let page3 = "<h1>Page 3</h1> <b>third page content</b>";
+
+    let links = document.querySelectorAll("a");
+    let root = document.querySelector("#root");
+    console.log(links);
+    links.forEach((a) => {
+      a.onclick = (e) => {
+        e.preventDefault();
+        if (a.id == "1") {
+          root.innerHTML = page1;
+          document.title = a.innerText;
+          window.history.replaceState({}, "", `/${a.innerText}`);
+        } else if (a.id == "2") {
+          root.innerHTML = page2;
+          document.title = a.innerText;
+          window.history.replaceState({}, "", `/${a.innerText}`);
+        } else if (a.id == "3") {
+          root.innerHTML = page3;
+          document.title = a.innerText;
+          window.history.replaceState({}, "", `/${a.innerText}`);
+        }
+      };
+    });
+  </script>
+</html>

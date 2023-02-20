@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
+  <script
+    crossorigin
+    src="https://unpkg.com/react@18/umd/react.development.js"
+  ></script>
+  <script
+    crossorigin
+    src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+  ></script>
+  <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+  <script type="text/babel">
+    let time = new Date().toLocaleTimeString();
+
+    //let h1 = document.createElement("h1");
+    //h1.innerText = `Hello the time is ${time}`;
+
+    /*let Time = React.createElement(
+      "h1",
+      {},
+      React.createElement("span", {}, `Hello the time is ${time}`)
+    );*/
+    let HomePage = () => {
+      return (
+        <div>
+          <h1>Home page </h1>
+          <Navbar />
+          <Time
+            color="orange"
+            time={`US format ${new Date().toLocaleTimeString("en-US")}`}
+          />
+          <Time
+            color="blue"
+            time={`French Format ${new Date().toLocaleTimeString("fr-FR")}`}
+          />
+          <Button />
+          <hr />
+          <AslemaBeslema />
+          <Footer />
+        </div>
+      );
+    };
+    // props
+    let Time = ({ time, color }) => {
+      console.log(time, color);
+      let style = {
+        backgroundColor: color,
+      };
+
+      return (
+        <div style={style}>
+          <span>The time is {time}</span>
+          <span> {/* comment */}</span>
+        </div>
+      );
+    };
+    function Button() {
+      return <button style={{ color: "red" }}>My button</button>;
+    }
+    let Footer = () => {
+      return (
+        <footer>
+          <span>Footer credit to react</span>
+          <a href="https://react.org">go to react</a>
+        </footer>
+      );
+    };
+
+    function AslemaBeslema() {
+      return (
+        <div>
+          <b>aslema</b>
+          <u>beslema</u>
+        </div>
+      );
+    }
+    function AslemaBeslema() {
+      return React.createElement("b", "u");
+    }
+
+    function Navbar() {
+      return (
+        <ul>
+          <li>link 1</li>
+          <li>link 1</li>
+          <li>link 1</li>
+          <li>link 1</li>
+        </ul>
+      );
+    }
+    // appendit / render lel app
+    // root.appendChild(h1);
+
+    let app = document.querySelector("#root");
+    const root = ReactDOM.createRoot(app); // createRoot(container!) if you use TypeScript
+    root.render(<HomePage />);
+  </script>
+</html>
