@@ -1,0 +1,13 @@
+-Recap 
+-how to start a new react project 
+-why should we use toolchains instead of configuring ourselves ! (vite)
+-React : 
+    -Components
+    -JSX
+    -Props
+    -Conditional Rendering
+    -Children
+    -Styling a JSX component (in jsx and using css)
+    -importing image 
+    -using fonts (assets ...)
+    
