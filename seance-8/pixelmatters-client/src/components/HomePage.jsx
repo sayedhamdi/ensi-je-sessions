@@ -2,6 +2,8 @@ import Article from './Article';
 import Button from './Button'
 import Row from './Row';
 
+//chemin absolut 
+import mohsen from './images/logo.png'
 function HomePage() {
 
     let article1 = {
@@ -23,6 +25,7 @@ function HomePage() {
         <Row>
           <Article {...article1}/>
           <Article {...article2}/>
+          <img src= {mohsen} alt="logo" />
         </Row>
     )
 }
