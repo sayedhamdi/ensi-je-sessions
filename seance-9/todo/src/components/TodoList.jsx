@@ -1,11 +1,11 @@
 import Todo from "./Todo";
 
-function TodoList({todolist}){
+function TodoList({todolist,handleDoneChange,deleteTodo}){
 
     return (
-        <div class="TodoList">
+        <div className="TodoList">
             <hr></hr>
-          {todolist.map(({todo,done}) => <Todo todo={todo} done={done}/>)}
+          {todolist.map(({todo,done,id}) => <Todo deleteTodo={deleteTodo} handleDoneChange={handleDoneChange} id={id} todo={todo} done={done}/>)}
           <hr></hr>
         </div>
     )
